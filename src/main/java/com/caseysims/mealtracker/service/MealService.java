@@ -1,5 +1,6 @@
 package com.caseysims.mealtracker.service;
 
+import com.caseysims.mealtracker.MealType;
 import com.caseysims.mealtracker.entity.Meal;
 import com.caseysims.mealtracker.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,8 @@ public class MealService
         return mealRepository.findAll();
     }//getMeals function
 
-    public void addMeal(float timeToCook, String type, String name, int portionsLeft)
+    public void addMeal(Meal meal)
     {
-        Meal meal = new Meal(timeToCook, type, name, portionsLeft);
         mealRepository.save(meal);
     }//addMeal function
 

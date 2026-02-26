@@ -1,10 +1,8 @@
 package com.caseysims.mealtracker.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.caseysims.mealtracker.MealType;
+import jakarta.persistence.*;
 
 @Entity
 public class Meal
@@ -14,40 +12,41 @@ public class Meal
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private float timeToCook;
-    private String type;
+    private float cookTime;
+    @Enumerated(EnumType.STRING)
+    private MealType mealType;
     private String name;
-    private int portionsLeft;
+    private int portionCount;
 
     public Meal()
     {
 
     }
 
-    public Meal(float timeToCook, String type, String name, int portionsLeft)
-    {
-        this.timeToCook = timeToCook;
-        this.type = type;
-        this.name = name;
-        this.portionsLeft = portionsLeft;
-    }
+//    public Meal(float timeToCook, MealType type, String name, int portionsLeft)
+//    {
+//        this.timeToCook = timeToCook;
+//        this.type = type;
+//        this.name = name;
+//        this.portionsLeft = portionsLeft;
+//    }
 
     //GETTERS
 
-    public float getTimeToCook() {
-        return timeToCook;
+    public float getcookTime() {
+        return cookTime;
     }
 
-    public String getType() {
-        return type;
+    public MealType getMealType() {
+        return mealType;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPortionsLeft() {
-        return portionsLeft;
+    public int getPortionCount() {
+        return portionCount;
     }
 
     //SETTERS
@@ -57,8 +56,16 @@ public class Meal
         this.name = name;
     }
 
-    public void setType(String type)
+    public void setMealType(MealType mealType)
     {
-        this.type = type;
+        this.mealType = mealType;
+    }
+
+    public void setPortionCount(int portionCount) {
+        this.portionCount = portionCount;
+    }
+
+    public void setCookTime(float cookTime) {
+        this.cookTime = cookTime;
     }
 }

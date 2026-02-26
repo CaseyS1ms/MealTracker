@@ -6,10 +6,13 @@ import com.caseysims.mealtracker.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class MealController
 {
 
@@ -20,6 +23,13 @@ public class MealController
     public List<Meal> getMeals()
     {
         return mealService.getMeals();
+    }
+
+    @PostMapping("addMeal")
+    public String  addMeal(@RequestBody Meal meal)
+    {
+        mealService.addMeal(meal);
+        return "Success";
     }
 
 }

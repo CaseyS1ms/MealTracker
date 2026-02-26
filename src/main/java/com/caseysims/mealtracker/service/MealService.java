@@ -34,7 +34,11 @@ public class MealService
 
     public void logPortion(long id)
     {
-
+        Optional<Meal> temp = findMeal(id);
+        Meal meal = temp.get();
+        int portionCount = meal.getPortionCount() - 1;
+        meal.setPortionCount(portionCount);
+        mealRepository.save(meal);
     }//logPortion Function
 
     public void addPortion(long id,int amount)

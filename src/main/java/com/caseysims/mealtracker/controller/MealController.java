@@ -3,6 +3,7 @@ package com.caseysims.mealtracker.controller;
 import com.caseysims.mealtracker.entity.Meal;
 
 import com.caseysims.mealtracker.service.MealService;
+import org.hibernate.annotations.NamedEntityGraphs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,13 @@ public class MealController
     public String logPortion(@RequestParam long id)
     {
         mealService.logPortion(id);
+        return "Success";
+    }
+
+    @DeleteMapping("removeMeal")
+    public String removeMEal(@RequestParam long id)
+    {
+        mealService.removeMeal(id);
         return "Success";
     }
 

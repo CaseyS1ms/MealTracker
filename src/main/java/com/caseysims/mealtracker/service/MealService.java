@@ -32,14 +32,22 @@ public class MealService
         mealRepository.save(meal);
     }//addMeal function
 
-    public void logPortion()
+    public void logPortion(long id)
     {
 
     }//logPortion Function
 
-    public void addPortion()
+    public void addPortion(long id,int amount)
     {
-
+        Optional<Meal> temp = findMeal(id);
+        Meal meal = temp.get();
+        int portionCount = meal.getPortionCount();
+        meal.setPortionCount(portionCount + amount);
     }//addPortion Function
+
+    public Optional<Meal> findMeal(long id)
+    {
+        return mealRepository.findById(id);
+    }
 
 }//MealService class

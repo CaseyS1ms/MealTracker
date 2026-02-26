@@ -5,10 +5,7 @@ import com.caseysims.mealtracker.entity.Meal;
 import com.caseysims.mealtracker.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,13 @@ public class MealController
     public String  addMeal(@RequestBody Meal meal)
     {
         mealService.addMeal(meal);
+        return "Success";
+    }
+
+    @PutMapping("addPortion")
+    public String addPortion(@RequestParam long id, @RequestParam int amount)
+    {
+        mealService.addPortion(id, amount);
         return "Success";
     }
 

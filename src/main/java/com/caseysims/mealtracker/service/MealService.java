@@ -42,7 +42,9 @@ public class MealService
         Optional<Meal> temp = findMeal(id);
         Meal meal = temp.get();
         int portionCount = meal.getPortionCount();
-        meal.setPortionCount(portionCount + amount);
+        int newPortion = portionCount + amount;
+        meal.setPortionCount(newPortion);
+        mealRepository.save(meal);
     }//addPortion Function
 
     public Optional<Meal> findMeal(long id)

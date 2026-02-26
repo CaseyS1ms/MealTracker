@@ -36,4 +36,11 @@ public class MealController
         return "Success";
     }
 
+    @PutMapping("logPortion")
+    public String logPortion(@RequestParam long id)
+    {
+        mealService.logPortion(id);
+        return "Success";
+    }
+
 }

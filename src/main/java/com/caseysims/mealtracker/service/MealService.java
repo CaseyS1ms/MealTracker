@@ -23,13 +23,13 @@ public class MealService
 
     public List<Meal> getMeals()
     {
-
         return mealRepository.findAll();
     }//getMeals function
 
-    public void addMeal()
+    public void addMeal(float timeToCook, String type, String name, int portionsLeft)
     {
-
+        Meal meal = new Meal(timeToCook, type, name, portionsLeft);
+        mealRepository.save(meal);
     }//addMeal function
 
     public void logPortion()

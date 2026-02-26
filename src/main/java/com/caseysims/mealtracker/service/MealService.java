@@ -32,6 +32,13 @@ public class MealService
         mealRepository.save(meal);
     }//addMeal function
 
+    public void removeMeal(long id)
+    {
+        Optional<Meal> temp = findMeal(id);
+        Meal meal = temp.get();
+        mealRepository.delete(meal);
+    }//removeMeal function
+
     public void logPortion(long id)
     {
         Optional<Meal> temp = findMeal(id);

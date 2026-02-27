@@ -23,6 +23,12 @@ public class MealController
         return mealService.getMeals();
     }
 
+    @GetMapping("getRandomMeal")
+    public Meal getRandomMeal()
+    {
+        return mealService.getRandomMeal();
+    }
+
     @PostMapping("addMeal")
     public String  addMeal(@RequestBody Meal meal)
     {

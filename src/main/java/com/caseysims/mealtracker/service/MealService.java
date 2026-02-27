@@ -6,8 +6,12 @@ import com.caseysims.mealtracker.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class MealService
@@ -16,10 +20,15 @@ public class MealService
     MealRepository mealRepository;
 
 
-    public Optional<Meal> getRandomMeal()
+    public Meal getRandomMeal()
     {
+        Random random = new Random();
+        List<MealType> mealTypes = new ArrayList<>(Arrays.asList(MealType.BATCH_REHEAT, MealType.FRESH));
+        List<Meal> potentialMeals = mealRepository.findByMealTypeIn(mealTypes);
+        int chosenMeal = random.nextInt(potentialMeals.size());
+        return potentialMeals.get(chosenMeal);
 
-        return Optional.empty();
+
     }//getRandomMeals function
 
     public List<Meal> getMeals()

@@ -23,17 +23,11 @@ public class Meal
 
     }
 
-//    public Meal(float timeToCook, MealType type, String name, int portionsLeft)
-//    {
-//        this.timeToCook = timeToCook;
-//        this.type = type;
-//        this.name = name;
-//        this.portionsLeft = portionsLeft;
-//    }
+
 
     //GETTERS
 
-    public float getcookTime() {
+    public float getCookTime() {
         return cookTime;
     }
 
@@ -47,6 +41,10 @@ public class Meal
 
     public int getPortionCount() {
         return portionCount;
+    }
+
+    public long getId() {
+        return id;
     }
 
     //SETTERS
